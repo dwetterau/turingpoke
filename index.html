@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=320, initial-scale=1"/>
+	<title>Turing Plays Pokemon</title>
+	<style type="text/css">
+		body {
+			background: #EEE;
+			text-align: center;
+			margin-top: 10%;
+		}	
+	</style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>	
+  <h1> Turing Plays Pokemon </h1>
+	<canvas id="videoCanvas" width="640" height="480">
+		<p>
+			Please use a browser that supports the Canvas Element, like
+			<a href="http://www.google.com/chrome">Chrome</a>,
+			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
+			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+		</p>
+	</canvas>
+  <form id="static_info">
+    Enter display name: <input type="text" id="name" name="name">
+    Enter secret code: <input type="password" id="code" name="code">
+  </form>
+  <form id="command_form">
+    Enter command: <input type="text" id="command" name="command">
+    <input id="submit_button" type="submit" value="Submit">
+  </form>
+  <script type= "text/javascript" defer>
+  $('#command_form').submit(function(ev) {
+    var data = {
+      command: $('#command').val(),
+      name: $('#name').val(),
+      code: $('#code').val()
+    };
+    $.post('/command', {
+        data: data,
+        success: function() {
+          $('#command').val('');
+        }
+    });    
+    ev.preventDefault();
+  });
+  </script>
+	<script type="text/javascript" src="jsmpg.js"></script>
+	<script type="text/javascript">
+		// Show loading notice
+		var canvas = document.getElementById('videoCanvas');
+		var ctx = canvas.getContext('2d');
+		ctx.fillStyle = '#444';
+		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+
+		// Setup the WebSocket connection and start the player
+		var client = new WebSocket( 'ws://192.168.2.13:8084/' );
+		var player = new jsmpeg(client, {canvas:canvas});
+	</script>
+</body>
+</html>
