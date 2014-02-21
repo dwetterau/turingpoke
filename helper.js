@@ -25,8 +25,16 @@ function add_controls() {
     Mousetrap.bind('x', function() { post('b'); })
 
     }, 50);
-
+    var lock = 0;
+    // clear lock every 5 seconds JIC a request fails
+    setInterval(function() {
+      lock = 0;
+    }, 5000);
     function post (command) {
+        if (lock > 0) {
+          return;
+        }
+        lock += 1;
         var data = {
             command: command,
             name: $('#name').val(),
@@ -35,7 +43,7 @@ function add_controls() {
         $.post('/command', {
             data: data,
             success: function() {
-                console.log('worked');
+              lock -= 1;
             }
         });
     }
