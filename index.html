@@ -30,6 +30,12 @@
     Enter command: <input type="text" id="command" name="command">
     <input id="submit_button" type="submit" value="Submit">
   </form>
+  <div>
+    <br>Please don't write bots to spam moves, it's simply beneath us. Lets have some fun.
+  </div>
+  <div>
+  <a href="https://docs.google.com/document/d/1UW8mbtaWQaaW2NybS6pcPMGbf1AhsTKbVF7lv9Jcikw/edit?usp=sharing">Strategy Google Doc</a>
+  </div>
   <script type= "text/javascript" defer>
   $('#command_form').submit(function(ev) {
     var data = {
@@ -55,7 +61,7 @@
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
 		// Setup the WebSocket connection and start the player
-		var client = new WebSocket( 'ws://192.168.2.13:8084/' );
+		var client = new WebSocket( 'ws://66.90.219.236:8084/' );
 		var player = new jsmpeg(client, {canvas:canvas});
 	</script>
 </body>
