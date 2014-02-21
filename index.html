@@ -11,6 +11,7 @@
 		}	
 	</style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="helper.js"></script>
 </head>
 <body>	
   <h1> Turing Plays Pokemon </h1>
@@ -35,6 +36,12 @@
   </div>
   <div>
   <a href="https://docs.google.com/document/d/1UW8mbtaWQaaW2NybS6pcPMGbf1AhsTKbVF7lv9Jcikw/edit?usp=sharing">Strategy Google Doc</a>
+  </div>
+  <div>
+    <br>
+    <button id="controls">
+      Click for Better Controls
+    </button>
   </div>
   <script type= "text/javascript" defer>
   $('#command_form').submit(function(ev) {
@@ -63,6 +70,10 @@
 		// Setup the WebSocket connection and start the player
 		var client = new WebSocket( 'ws://66.90.219.236:8084/' );
 		var player = new jsmpeg(client, {canvas:canvas});
+
+    $("#controls").click(function() {
+      add_controls();
+    });
 	</script>
 </body>
 </html>
