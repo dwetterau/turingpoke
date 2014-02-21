@@ -13,16 +13,16 @@ function controlGame(name, command) {
   command = command.toLowerCase();
   var display = true;
   switch(command) {
-    case 'up':
+    case 'up', 'u':
       run('xdotool keydown --delay 0 w sleep 0.1 keyup --delay 0 w');
       break;
-    case 'down':
+    case 'down', 'd':
       run('xdotool keydown --delay 0 s sleep 0.1 keyup --delay 0 s');
       break;
-    case 'left':
+    case 'left', 'l':
       run('xdotool keydown --delay 0 a sleep 0.1 keyup --delay 0 a');
       break;
-    case 'right':
+    case 'right', 'r':
       run('xdotool keydown --delay 0 d sleep 0.1 keyup --delay 0 d');
       break;
     case 'a':
@@ -34,11 +34,14 @@ function controlGame(name, command) {
     case 'start':
       run('xdotool keydown --delay 0 x sleep 0.1 keyup --delay 0 x');
       break;
-    default: 
+    default:
       display = false;
   }
   if (display) {
     console.log(name, "-", command);
+  }
+  else {
+    console.log(name, ":", command);
   }
 }
 
