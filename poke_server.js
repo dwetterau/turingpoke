@@ -25,15 +25,19 @@ function controlGame(name, command) {
       display = false;
       break;     
     case 'up':
+    case 'u':
       run('xdotool keydown --delay 0 w sleep 0.1 keyup --delay 0 w');
       break;
     case 'down':
+    case 'd':
       run('xdotool keydown --delay 0 s sleep 0.1 keyup --delay 0 s');
       break;
     case 'left':
+    case 'l':
       run('xdotool keydown --delay 0 a sleep 0.1 keyup --delay 0 a');
       break;
     case 'right':
+    case 'r':
       run('xdotool keydown --delay 0 d sleep 0.1 keyup --delay 0 d');
       break;
     case 'a':
@@ -48,11 +52,14 @@ function controlGame(name, command) {
         run('xdotool keydown --delay 0 x sleep 0.1 keyup --delay 0 x');
       }
       break;
-    default: 
+    default:
       display = false;
   }
   if (display) {
     console.log(name, "-", command);
+  }
+  else {
+    console.log(name, ":", command);
   }
 }
 
