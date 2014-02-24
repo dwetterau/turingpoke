@@ -80,7 +80,7 @@ app.post('/command', function(req, res) {
   if (!req.body.data || 
       !req.body.data.command || 
       !req.body.data.name ||
-      req.body.data.code !== 'salmonchase2') {
+      req.body.data.code !== 'SECRET_CODE') {
     res.send(401);
     return;
   }

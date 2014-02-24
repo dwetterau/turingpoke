@@ -32,12 +32,6 @@
     <input id="submit_button" type="submit" value="Submit">
   </form>
   <div>
-    <br>Please don't write bots to spam moves, it's simply beneath us. Lets have some fun.
-  </div>
-  <div>
-  <a href="https://docs.google.com/document/d/1UW8mbtaWQaaW2NybS6pcPMGbf1AhsTKbVF7lv9Jcikw/edit?usp=sharing">Strategy Google Doc</a>
-  </div>
-  <div>
     <br>
     <button id="controls">
       Click for Better Controls
@@ -68,7 +62,7 @@
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
 		// Setup the WebSocket connection and start the player
-		var client = new WebSocket( 'ws://66.90.219.236:8084/' );
+		var client = new WebSocket( 'ws://STREAM_SERVER_IP:8084/' );
 		var player = new jsmpeg(client, {canvas:canvas});
 
     $("#controls").click(function() {
