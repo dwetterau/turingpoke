@@ -1,0 +1,10 @@
+{
+  "name": "turingpoke",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~3.4.8",
+    "cli-color": "~0.2.3",
+    "node-ffi": "~0.5.7",
+    "ws": "~0.4.31"
+  }
+}

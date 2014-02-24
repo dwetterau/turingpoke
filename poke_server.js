@@ -11,7 +11,7 @@ var clc = require('cli-color');
 var run = libc.system;    
 run('xdotool search --onlyvisible --name VBA-M windowactivate');
 
-var START_P = .2;
+var START_P = .25;
 var MOVES_PER_SAVE = 300;
 var cur_move = 0;
 
@@ -19,7 +19,7 @@ function controlGame(name, command) {
   command = command.toLowerCase();
   var display = true;
   switch(command) {
-    case 'plzsave':
+    case 'plzsave_secret':
       run('xdotool keydown --delay 0 shift+F3 sleep 0.1 keyup --delay 0 shift+F3');
       console.log(clc.red.bold("SAVING GAME STATE!"));
       display = false;
@@ -47,18 +47,19 @@ function controlGame(name, command) {
       run('xdotool keydown --delay 0 e sleep 0.1 keyup --delay 0 e');
       break;
     case 'start':
+    case 'start_secret':
       // Sigh... silly people
-      if (Math.random() < START_P) {
+      if (Math.random() < START_P || command == 'start_secret') {
         run('xdotool keydown --delay 0 x sleep 0.1 keyup --delay 0 x');
+      }
+      if (command == 'start_secret') {
+        command = 'start';
       }
       break;
     default:
       display = false;
   }
   if (display) {
-    console.log(name, "-", command);
-  }
-  else {
     console.log(name, ":", command);
   }
 }
@@ -94,7 +95,7 @@ app.post('/command', function(req, res) {
     return;
   }
   if (cur_move % MOVES_PER_SAVE == 0) {
-    controlGame("master", "plzsave");
+    controlGame("master", "plzsave_secret");
   }
   if (command[0] == '-') {
     displayChat(name, command.slice(1));

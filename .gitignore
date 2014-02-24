@@ -1,2 +1,3 @@
 *.gb
 *.gba
+node_modules/
