@@ -3,6 +3,8 @@ turingpoke
 
 After seeing the "TwitchPlaysPokemon" craze on the internet, I decided to implement a simple system that accomplished the same thing but didn't suffer from the imposed stream lag on [TwitchTV](http://twitch.tv). A description of the design and how to setup and run the system can be found below.
 
+![Screenshot of it in action](http://i.imgur.com/KODO9co.png)
+
 ## System Overview
 The system is composed of four parts. The first is the emulator, for which I chose to use Visual Boy Advance. I ran the emulator as is (with 2x the screen size) on the ROM that we wished to play.
 
